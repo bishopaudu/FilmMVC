@@ -141,7 +141,7 @@ public class FilmDAO {
 		}
    }
 
-   public void updateFilmById(int id, String title, int year, String director, String review) {
+   public void updateFilmById(int id, String title, int year, String director, String review,String stars) {
 	    openConnection();
 	    try {
 	        String checkExistsSQL = "SELECT COUNT(*) FROM films WHERE id=?";
@@ -154,13 +154,14 @@ public class FilmDAO {
 	            System.out.println("Film with ID: " + id + " does not exist.");
 	            return;
 	        }
-	        String updateSQL = "UPDATE films SET title=?, year=?, director=?, review=? WHERE id=?";
+	        String updateSQL = "UPDATE films SET title=?, year=?, director=?, review=?, stars=? WHERE id=?";
 	        PreparedStatement preparedStatement = conn.prepareStatement(updateSQL);
 	        preparedStatement.setString(1, title);
 	        preparedStatement.setInt(2, year);
 	        preparedStatement.setString(3, director);
 	        preparedStatement.setString(4, review);
-	        preparedStatement.setInt(5, id);
+	        preparedStatement.setString(5, stars);
+	        preparedStatement.setInt(6, id);
 
 	        int rowsAffected = preparedStatement.executeUpdate();
 	        if (rowsAffected > 0) {

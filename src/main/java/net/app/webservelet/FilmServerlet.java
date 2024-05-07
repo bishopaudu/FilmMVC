@@ -136,8 +136,9 @@ public class FilmServerlet extends HttpServlet {
 	    int year = Integer.parseInt(request.getParameter("year"));
 	    String director = request.getParameter("director");
 	    String review = request.getParameter("review");
+	    String stars = request.getParameter("stars");
 
-	    filmDAO.updateFilmById(id, title, year, director, review);
+	    filmDAO.updateFilmById(id, title, year, director, review,stars);
 
 	    response.sendRedirect("list"); 
 	}
