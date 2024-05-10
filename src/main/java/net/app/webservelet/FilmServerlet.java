@@ -14,32 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 import net.app.dao.FilmDAO;
 import net.app.film.Film;
 
-/**
- * Servlet implementation class FilmServerlet
- */
 @WebServlet("/")
 public class FilmServerlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private FilmDAO filmDAO;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FilmServerlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    
+   
     public void init() throws ServletException{
     	filmDAO = new FilmDAO();
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        //response.getWriter().append("Served at: ").append(request.getContextPath());
         String action = request.getServletPath();
         switch(action) {
             case "/new":
@@ -143,12 +128,8 @@ public class FilmServerlet extends HttpServlet {
 	    response.sendRedirect("list"); 
 	}
 
-    /**
-     * @throws ServletException 
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
+ 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // TODO Auto-generated method stub
         doGet(request, response);
     }
 
